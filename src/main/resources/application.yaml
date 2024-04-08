@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: claim
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: dbuser
+    password: dbpass
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      show-sql: true
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+    tomcat:
+      max-threads: 100
+      max-connections: 1000
+      accept-count: 100
+      max-http-post-size: 100MB
