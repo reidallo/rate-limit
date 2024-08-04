@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @Slf4j
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(RateLimitException.class)
+    public ResponseEntity<String> handleRateLimitException(RateLimitException e) {
+        return ResponseEntity.status(e.getStatus()).body(e.getMessage());
+    }
+
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> handleNotFoundException(NotFoundException e) {
         return ResponseEntity.status(e.getStatus()).body(e.getMessage());
